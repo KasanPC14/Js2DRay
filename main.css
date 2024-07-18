@@ -1,0 +1,12 @@
+#gameCanvas{
+    background-color: black;
+    width: 800px;
+    height: 600px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+audio{
+    display: none;
+}
