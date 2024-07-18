@@ -7,8 +7,8 @@ class Ray {
         this.rot = rot;
         this.range = range;
         this.overridable = false;
-        this.endPoint = []
-        this.colPoints = []
+        this.endPoint = [];
+        this.colPoints = [];
     }
 
     Draw(ctx) {

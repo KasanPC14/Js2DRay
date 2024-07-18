@@ -6,14 +6,14 @@ class Player {
         this.y = y;
         this.rot = rot;
         this.radius = 4;
-        this.viewRange = 500;
-        this.viewAngle = 120;
+        this.viewRange = 750;
+        this.viewAngle = 90;
         this.walkSpeed = 0.5;
         this.rotSpeed = 0.75;
 
         this.lookRays = [];
 
-        this.rayCount = 199;  //Make it odd for equal vision for left and right
+        this.rayCount = 149;  //Make it odd for equal vision for left and right
         for (let i = 0; i < this.rayCount; i++) {
             var n_ray = new Ray(this.x, this.y, this.rot - this.viewAngle / 2 + (i * this.viewAngle / this.rayCount), this.viewRange);
             this.lookRays.push(n_ray);
