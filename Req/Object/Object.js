@@ -8,6 +8,8 @@ class Obj{
     constructor(points){
         this.points = points;
         this.collision = true;
+        this.customColor = false;
+        this.color = [255,255,255];
     }
 
     Draw2D(ctx){
@@ -24,5 +26,9 @@ class Obj{
         
         ctx.stroke();
 
+    }
+
+    setColor(r,g,b){
+        this.color = [r,g,b];
     }
 };

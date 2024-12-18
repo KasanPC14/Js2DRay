@@ -5,7 +5,7 @@ var player = null;
 
 var wallHeights = 15000;
 var wallWidths = 800;
-var brightness = 14000;
+var brightness = 60;
 
 var isMap = false;
 
@@ -38,14 +38,19 @@ function Draw3D(){
     setColor(ctx,0,200,0,255);
     ctx.fillRect(0,300,800,300);*/
 
+
+    //ray_i stands for index of the ray
     for (let ray_i = 0; ray_i < player.lookRays.length; ray_i++){
         
+
         if (player.lookRays[ray_i].colPoints.length > 0){
             var rayHit_x = player.lookRays[ray_i].colPoints[0][0];
             var rayHit_y = player.lookRays[ray_i].colPoints[0][1];
-    
+            
+            var hitObj = player.lookRays[ray_i].hitObjects[0];
+            
             var dis = getDistance(player.x,player.y,rayHit_x,rayHit_y);
-            setColor(ctx, brightness/dis , brightness/dis, brightness/dis, 255);
+            setColor(ctx, hitObj.color[0] * brightness/dis , hitObj.color[1] * brightness/dis, hitObj.color[2] * brightness/dis, 255);
             ctx.fillRect(ray_i * 800/player.lookRays.length , 300 - 1/dis*wallHeights/2 ,(1/dis) * wallWidths,(1/dis)*wallHeights);
         }
 
@@ -74,10 +79,14 @@ function Setup() {
     player = new Player(100, 100, 0);
 
     var n_obj= new Obj([[400,300],[500,300],[500,400],[400,400]]);
+    n_obj.setColor(0,255,0);
     Objects.push(n_obj);
+  
 
     n_obj = new Obj([[250,150],[350,50],[450,150],[400,275],[300,275]]);
+    n_obj.setColor(0,0,255);
     Objects.push(n_obj);
+    
 
     //Fire Update
     setInterval(Update, 5);
