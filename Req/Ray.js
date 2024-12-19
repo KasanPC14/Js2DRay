@@ -10,6 +10,15 @@ class Ray {
         this.endPoint = [];
         this.colPoints = [];
         this.hitObjects = [];
+        this.queue = 0;
+    }
+
+    getColDistance(){
+
+        if(this.colPoints.length < 1) return this.range;
+
+        var endPoint = this.getEndPoint();
+        return getDistance(this.x,this.y, this.colPoints[0][0], this.colPoints[0][1]);
     }
 
     Draw(ctx) {

@@ -36,3 +36,28 @@ function rayColCheck(x1,y1,x2,y2,x3,y3,x4,y4){
     return false;
                 
 }
+
+function QuickSort(rays){
+
+    if (rays.length <= 1){
+        return rays;
+    }
+
+    var pivot = rays[0];
+    var left_array = [];
+    var right_array = [];
+
+    for(let i = 1; i < rays.length; i++){
+        if (rays[i].getColDistance() < pivot.getColDistance()){
+            left_array.push(rays[i]);
+        }
+        else {
+            right_array.push(rays[i]);
+        }
+        
+    }
+
+
+    return QuickSort(right_array).concat([pivot],QuickSort(left_array));
+    
+}

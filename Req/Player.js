@@ -13,9 +13,10 @@ class Player {
 
         this.lookRays = [];
 
-        this.rayCount = 149;  //Make it odd for equal vision for left and right
+        this.rayCount = 199;  //Make it odd for equal vision for left and right
         for (let i = 0; i < this.rayCount; i++) {
             var n_ray = new Ray(this.x, this.y, this.rot - this.viewAngle / 2 + (i * this.viewAngle / this.rayCount), this.viewRange);
+            n_ray.queue = i;
             this.lookRays.push(n_ray);
             Rays.push(n_ray);
         }
@@ -74,6 +75,7 @@ class Player {
         for (let i = 0; i < this.lookRays.length; i++) {
 
             this.lookRays[i].rot = this.rot - this.viewAngle / 2 + (i * this.viewAngle / this.rayCount);
+            this.lookRays[i].queue = i;
             this.lookRays[i].x = this.x;
             this.lookRays[i].y = this.y;
 

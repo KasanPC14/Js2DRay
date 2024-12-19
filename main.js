@@ -39,10 +39,13 @@ function Draw3D(){
     ctx.fillRect(0,300,800,300);*/
 
 
+    player.lookRays = QuickSort(player.lookRays);
+
     //ray_i stands for index of the ray
+    
     for (let ray_i = 0; ray_i < player.lookRays.length; ray_i++){
         
-
+        //HAS COLLISION
         if (player.lookRays[ray_i].colPoints.length > 0){
             var rayHit_x = player.lookRays[ray_i].colPoints[0][0];
             var rayHit_y = player.lookRays[ray_i].colPoints[0][1];
@@ -51,7 +54,7 @@ function Draw3D(){
             
             var dis = getDistance(player.x,player.y,rayHit_x,rayHit_y);
             setColor(ctx, hitObj.color[0] * brightness/dis , hitObj.color[1] * brightness/dis, hitObj.color[2] * brightness/dis, 255);
-            ctx.fillRect(ray_i * 800/player.lookRays.length , 300 - 1/dis*wallHeights/2 ,(1/dis) * wallWidths,(1/dis)*wallHeights);
+            ctx.fillRect((player.lookRays[ray_i].queue) * 800/player.lookRays.length , 300 - 1/dis*wallHeights/2 ,(1/dis) * wallWidths,(1/dis)*wallHeights);
         }
 
     }   
@@ -61,6 +64,8 @@ function Draw3D(){
 
 function Update() {
 
+    //
+    
     //Draw
     ctx.clearRect(0, 0, 800, 600);
     
