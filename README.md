@@ -1,7 +1,7 @@
-This is just a project which I challenged myself to make raycasting for fun.
+Raycasting Project
 
 CONTROLS:
 
 WASD -> Movement
-
-M -> Toggle Map
+M -> Map Toggle
+Horizontal Mouse / Arrow Keys (Left-Right) -> Horizontal Cam Movement
