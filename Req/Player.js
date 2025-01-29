@@ -10,6 +10,7 @@ class Player {
         this.viewAngle = 90;
         this.walkSpeed = 0.5;
         this.rotSpeed = 0.75;
+        this.mouseSens = 0.25;
 
         this.lookRays = [];
 

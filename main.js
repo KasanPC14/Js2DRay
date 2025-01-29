@@ -32,20 +32,14 @@ function Draw2D() {
 
 function Draw3D(){
 
-    /*setColor(ctx,0,200,200,255);
-    ctx.fillRect(0,0,800,600);
-
-    setColor(ctx,0,200,0,255);
-    ctx.fillRect(0,300,800,300);*/
-
-
+    //Sorting rays from their z-index(distance)
     player.lookRays = QuickSort(player.lookRays);
 
     //ray_i stands for index of the ray
     
     for (let ray_i = 0; ray_i < player.lookRays.length; ray_i++){
         
-        //HAS COLLISION
+        //if lookray has atleast one collision point, we are drawing it.
         if (player.lookRays[ray_i].colPoints.length > 0){
             var rayHit_x = player.lookRays[ray_i].colPoints[0][0];
             var rayHit_y = player.lookRays[ray_i].colPoints[0][1];
@@ -53,13 +47,19 @@ function Draw3D(){
             var hitObj = player.lookRays[ray_i].hitObjects[0];
             
             var dis = getDistance(player.x,player.y,rayHit_x,rayHit_y);
+            
+            //Setting its color to (rgb * brightness / distance)
             setColor(ctx, hitObj.color[0] * brightness/dis , hitObj.color[1] * brightness/dis, hitObj.color[2] * brightness/dis, 255);
-            ctx.fillRect((player.lookRays[ray_i].queue) * 800/player.lookRays.length , 300 - 1/dis*wallHeights/2 ,(1/dis) * wallWidths,(1/dis)*wallHeights);
+            
+            //queue of the ray => order of the ray left to right
+            //
+            //TODO: Solve the fisheye problem.
+            ctx.fillRect((player.lookRays[ray_i].queue) * 800/player.lookRays.length, 300 - 1/dis*wallHeights/2, (1/dis) * wallWidths, (1/dis)*wallHeights);
         }
 
     }   
 
-    setColor(ctx, 255, 255, 255, 255);
+   
 }
 
 function Update() {
@@ -81,6 +81,10 @@ function Update() {
 }
 
 function Setup() {
+
+    
+
+    ///
     player = new Player(100, 100, 0);
 
     var n_obj= new Obj([[400,300],[500,300],[500,400],[400,400]]);
@@ -98,6 +102,24 @@ function Setup() {
 }
 
 //INPUTS
+
+canvas.addEventListener("click", ()=>{
+    canvas.requestPointerLock({unadjustedMovement: true,});
+})
+
+window.addEventListener("mousemove", (event)=>{
+
+    //Sets the quantity of the mouse position's change
+    mouseDragPos[0] = event.movementX;
+    mouseDragPos[1] = event.movementY;
+
+    //Turn the player
+    player.rot += mouseDragPos[0] * player.mouseSens;
+
+    //Sets the mouse position
+    mousePos[0] = event.clientX;
+    mousePos[1] = event.clientY;
+})
 
 window.addEventListener("keydown", (event) => {
     if (Key[event.key] == false) {
