@@ -80,7 +80,6 @@ class Ray {
     }
 
     isIntersecting(){
-        if (this.hitObjects.length>0) return true;
-        return false;
+        return this.hitObjects.length > 0;
     }
 };
