@@ -4,6 +4,6 @@ CONTROLS:
 
 WASD -> Movement
 
-M -> Map Toggle
+M -> 2D/3D Draw Toggle
 
-Horizontal Mouse / Arrow Keys (Left-Right) -> Horizontal Cam Movement
+Mouse / Arrow Keys -> Movement of Cam Manipulation
