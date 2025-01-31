@@ -5,6 +5,8 @@ var Key = {
     ["d"] : false,
     ["ArrowRight"] : false,
     ["ArrowLeft"] : false,
+    ["ArrowUp"] : false,
+    ["ArrowDown"] : false,
 }
 
 var mousePos = [0,0];

@@ -1,3 +1,12 @@
+var refreshRate = 60;
+var _dt = 1/refreshRate;
+
+function Clamp(v,min,max){
+    if (v<min) return min;
+    if (v>max) return max;
+    else return v;
+}
+
 function setColor(ctx,r,g,b,a){
     ctx.fillStyle = "rgb( "+ r.toString() + " " + g.toString() + " " + b.toString() + " / " + (a/255 * 100).toString() + "%)";
 }
@@ -21,7 +30,7 @@ function getDistance(x1,y1,x2,y2){
 
 function rayColCheck(x1,y1,x2,y2,x3,y3,x4,y4){
        
-
+    //I DONT KNOW HOW THIS WORKS, I JUST FOUND IT.
     var uA = ((x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3)) / ((y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1));
     var uB = ((x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3)) / ((y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1));
 
@@ -38,7 +47,8 @@ function rayColCheck(x1,y1,x2,y2,x3,y3,x4,y4){
 }
 
 function QuickSort(rays){
-
+    
+    //No sort needed.
     if (rays.length <= 1){
         return rays;
     }
@@ -46,6 +56,7 @@ function QuickSort(rays){
     var pivot = rays[0];
     var left_array = [];
     var right_array = [];
+
 
     for(let i = 1; i < rays.length; i++){
         if (rays[i].getColDistance() < pivot.getColDistance()){

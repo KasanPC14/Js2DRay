@@ -11,6 +11,8 @@ class Ray {
         this.colPoints = [];
         this.hitObjects = [];
         this.queue = 0;
+
+        this.color = "white";
     }
 
     getColDistance(){
@@ -22,7 +24,7 @@ class Ray {
     }
 
     Draw(ctx) {
-        ctx.strokeStyle = "white";
+        ctx.strokeStyle = this.color;
         ctx.beginPath();
         ctx.moveTo(this.x, this.y);
 
@@ -75,5 +77,10 @@ class Ray {
             //If the ray is overridable or has no points we do not process the array of points.
             this.colPoints = points;
         } 
+    }
+
+    isIntersecting(){
+        if (this.hitObjects.length>0) return true;
+        return false;
     }
 };

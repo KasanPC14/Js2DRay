@@ -54,7 +54,7 @@ function Draw3D(){
             //queue of the ray => order of the ray left to right
             //
             //TODO: Solve the fisheye problem.
-            ctx.fillRect((player.lookRays[ray_i].queue) * 800/player.lookRays.length, 300 - 1/dis*wallHeights/2, (1/dis) * wallWidths, (1/dis)*wallHeights);
+            ctx.fillRect((player.lookRays[ray_i].queue) * 800/player.lookRays.length, 300 + player.camRotV - 1/dis*wallHeights/2, (1/dis) * wallWidths, (1/dis)*wallHeights);
         }
 
     }   
@@ -98,7 +98,7 @@ function Setup() {
     
 
     //Fire Update
-    setInterval(Update, 5);
+    setInterval(Update, 1000/refreshRate);
 }
 
 //INPUTS
@@ -115,6 +115,7 @@ window.addEventListener("mousemove", (event)=>{
 
     //Turn the player
     player.rot += mouseDragPos[0] * player.mouseSens;
+    player.camRotV += -mouseDragPos[1] * player.mouseSens * 5;
 
     //Sets the mouse position
     mousePos[0] = event.clientX;
