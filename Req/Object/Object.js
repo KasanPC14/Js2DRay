@@ -10,6 +10,9 @@ class Obj{
         this.collision = true;
         this.customColor = false;
         this.color = [255,255,255];
+
+        this.texture = null;
+        this.type = "wall";
     }
 
     Draw2D(ctx){
