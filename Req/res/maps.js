@@ -10,4 +10,10 @@ var _1_0 = [
         "color" : [0,0,255],
     },
 
+    {
+        "type" : "texture",
+        "points" : [[100,100],[130,100],[130,130],[100,130]],
+        "texture" : "Req/res/tex/placeholder.png",
+    }
+
 ];

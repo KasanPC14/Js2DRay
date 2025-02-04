@@ -71,3 +71,8 @@ function QuickSort(rays){
     return QuickSort(right_array).concat([pivot],QuickSort(left_array));
     
 }
+
+function NormalizeBetween(v,bmin,bmax,amin,amax){
+    var ratio = (v-bmin)/(bmax-bmin);
+    return (amax-amin)*ratio + amin;
+}
