@@ -7,11 +7,12 @@ class Entity {
 //This class will be appended into Drawables3D array.
 //Due to different render type, entities will get different treatment from renderer in the main class.
 
-    constructor(x,y,name,textures_sources){
+    constructor(x,y,name,type,textures_sources){
         this.x = x;
         this.y = y;
         this.name = name;
         this.type = "Entity";
+        this.entityType = type;
         this.frame = 0;
         this.textures = [];
         for(var i = 0; i < textures_sources.length;i++){

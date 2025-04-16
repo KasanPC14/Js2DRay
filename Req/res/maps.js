@@ -4,6 +4,11 @@ var _1_0 = [
         "startPosition" : [250,50],
     },
     {
+        "type": "wall",
+        "points": [[0,0],[800,0],[800,600],[0,600]],
+        "color": [255,255,255],
+    },
+    {
         "type" : "wall",
         "points" : [[400,300],[500,300],[500,400],[400,400]],
         "color" : [0,255,0],
@@ -19,6 +24,14 @@ var _1_0 = [
         "points" : [[100,100],[130,100],[130,130],[100,130]],
         //"color" : [255,0,0],
         "texture" : "Req/res/tex/placeholder.png",
+        "repetitiveTexture" : false,
+    },
+    {
+        "type" : "wall",
+        "points" : [[150,100],[250,100],[250,130],[150,130]],
+        //"color" : [255,0,0],
+        "texture" : "Req/res/tex/placeholder.png",
+        "repetitiveTexture" : true,
     },
     {
         "type" : "entity",

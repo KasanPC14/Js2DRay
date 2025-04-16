@@ -96,23 +96,23 @@ class Player {
         let HmovY = 0; 
         //Vmov => back and forth - Hmov => left and right
         
-        if (Key["w"]) {
+        if (Key["w"] || Key["W"]) {
 
             VmovX = this.walkSpeed * Math.cos(degtorad(this.rot)) * _deltaTime;
             VmovY = this.walkSpeed * Math.sin(degtorad(this.rot)) * _deltaTime;
  
-        } else if (Key["s"]) {
+        } else if (Key["s"] || Key["S"]) {
 
             VmovX = -this.walkSpeed * Math.cos(degtorad(this.rot)) * _deltaTime;    //TODO: multiple Deltatime
             VmovY = -this.walkSpeed * Math.sin(degtorad(this.rot)) * _deltaTime;    //TODO: multiple Deltatime
         }
 
-        if (Key["a"]) {
+        if (Key["a"] || Key["A"]) {
 
             HmovX = -this.walkSpeed * Math.cos(degtorad(this.rot + 90)) * _deltaTime;    //TODO: multiple Deltatime
             HmovY = -this.walkSpeed * Math.sin(degtorad(this.rot + 90)) * _deltaTime;    //TODO: multiple Deltatime
 
-        } else if (Key["d"]) {
+        } else if (Key["d"] || Key["D"]) {
 
             HmovX = -this.walkSpeed * Math.cos(degtorad(this.rot - 90)) * _deltaTime;    //TODO: multiple Deltatime
             HmovY = -this.walkSpeed * Math.sin(degtorad(this.rot - 90)) * _deltaTime;    //TODO: multiple Deltatime
@@ -128,11 +128,17 @@ class Player {
         raysColCheck(this.colRays);
 
         for (let colRay_i = 0; colRay_i < this.colRays.length; colRay_i++){
-            if (this.colRays[colRay_i].isIntersecting()) return;
+            if (this.colRays[colRay_i].isIntersecting()) {
+
+                this.velocity[0] = 0;    //TODO: multiple Deltatime
+                this.velocity[1] = 0;   //TODO: multiple Deltatime
+            } else {
+                this.velocity[0] = VmovX + HmovX;    //TODO: multiple Deltatime
+                this.velocity[1] = VmovY + HmovY;   //TODO: multiple Deltatime
+            }
         }
 
-        this.velocity[0] = VmovX + HmovX;    //TODO: multiple Deltatime
-        this.velocity[1] = VmovY + HmovY;   //TODO: multiple Deltatime
+        
 
         this.x += this.velocity[0];
         this.y += this.velocity[1];

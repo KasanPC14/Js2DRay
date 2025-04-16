@@ -10,6 +10,10 @@ function setColor(ctx,r,g,b,a){
     ctx.fillStyle = "rgb( "+ r.toString() + " " + g.toString() + " " + b.toString() + " / " + (a/255 * 100).toString() + "%)";
 }
 
+function setStrokeColor(ctx,r,g,b,a){
+    ctx.strokeStyle = "rgb( "+ r.toString() + " " + g.toString() + " " + b.toString() + " / " + (a/255 * 100).toString() + "%)";
+}
+
 function addText(x,y,text) {
     ctx.fillText(text,x,y)
 }
@@ -134,7 +138,6 @@ function QuickSort(array){
     return QuickSort(right_array).concat([pivot],QuickSort(left_array));
     
 }
-
 
 
 function NormalizeBetween(v,bmin,bmax,amin,amax){

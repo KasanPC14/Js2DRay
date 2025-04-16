@@ -12,6 +12,7 @@ class Obj{
         this.color = [255,255,255];
         this.height = 1;
         this.texture = null;
+        this.repetitiveTexture = true;
         this.type = "wall";
     }
 
@@ -21,22 +22,20 @@ class Obj{
             case "wall":
 
                 if (this.texture){
-                    var size = 20;
-                    var avgX = 0;
-                    var avgY = 0;
-
-                    for(let i = 0; i < this.points.length; i++){
-                        avgX += this.points[i][0];
-                        avgY += this.points[i][1];
+                    ctx.strokeStyle = "white";
+                    ctx.beginPath();
+            
+                    ctx.moveTo(this.points[0][0], this.points[0][1]);
+            
+                    for (let i = 1; i < this.points.length; i++){
+                        ctx.lineTo(this.points[i][0], this.points[i][1]);
                     }
-
-                    avgX /= this.points.length;
-                    avgY /= this.points.length;
-
-                    ctx.drawImage(this.texture,avgX - size/2,avgY - size/2,size,size);
+            
+                    ctx.lineTo(this.points[0][0], this.points[0][1]);
+                    
                     ctx.stroke();
                 } else {
-                    ctx.strokeStyle = "white";
+                    setStrokeColor(ctx,this.color[0],this.color[1],this.color[2],255);
                     ctx.beginPath();
             
                     ctx.moveTo(this.points[0][0], this.points[0][1]);

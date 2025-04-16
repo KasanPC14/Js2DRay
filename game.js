@@ -43,17 +43,21 @@ function gameUpdate(){
     
 }
 
+function PistolShoot(){
+    canShoot = false;
+    pistolTexture.frame = 1;
+    
+    setTimeout(()=>{
+        pistolTexture.frame = 0;
+        canShoot = true;
+    },250);
+}
+
 function onMouseDown(button){
     console.log("a")
     if (button == MouseButtons.LeftMouseButton){
         if (canShoot) {
-            canShoot = false;
-            pistolTexture.frame = 1;
-            
-            setTimeout(()=>{
-                pistolTexture.frame = 0;
-                canShoot = true;
-            },250);
+            PistolShoot();
         }
         
     }

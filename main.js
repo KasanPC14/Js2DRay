@@ -4,8 +4,8 @@ var ctx = canvas.getContext("2d");
 var player = null;
 
 var wallHeights = 15000;
-var wallWidths = 800;
-var brightness = 100;
+var wallWidths = 1000;
+var brightness = 1000;
 
 var isMap = false;
 
@@ -88,18 +88,24 @@ function Draw3D() {
 
                         // (x1,y1) & (x2,y2) two points of the wall
 
-                        //Proportion of the ray hit's x or y position according to the wall
+                        // Proportion of the ray hit's x or y position according to the wall
                         var ratio = 0;
+              
+                        var repetition = 1;
+                        var repetitionIntensity = 1;
 
+
+                        if (hitObj.repetitiveTexture) repetition = a / 30 * (hitObj.texture.height / hitObj.texture.width);
+                        
                         if ((x1 - x2) == 0) {
-                            ratio = Math.abs((rayHit_y - y1) / (y1 - y2))
+                            ratio = Math.abs((rayHit_y - y1) / (y1 - y2) * repetition* repetitionIntensity);
                         } else {
-                            ratio = Math.abs((rayHit_x - x1) / (x1 - x2))
+                            ratio = Math.abs((rayHit_x - x1) / (x1 - x2) * repetition* repetitionIntensity);
                         }
 
-                        if (hitObj.classname == "entity") {
-                            //console.log(ratio);
-                        }
+                        ratio -= Math.floor(ratio);
+
+                        
 
                         //Calculation of angle which helps us to calculate ray count that hits the wall that we are looking.
                         var alpha = Math.acos((c * c + b * b - a * a) / (2 * c * b));
